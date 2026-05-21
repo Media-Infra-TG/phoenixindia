@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Phoenix Traders - Market Education</title>
+
+    <style>
+
+        /* MOBILE RESET */
+
+        * {
+
+            -webkit-tap-highlight-color: transparent !important;
+
+            -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+
+            outline: none !important;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            background-color: #000 !important;
+
+            color: #fff !important;
+
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            min-height: 100vh;
+
+        }
+
+
+
+        .main-container {
+
+            width: 100%;
+
+            max-width: 420px;
+
+            padding: 25px;
+
+            text-align: center;
+
+        }
+
+
+
+        /* COMPLIANT CIRCLE LOGO SYSTEM */
+
+        .logo-wrapper {
+
+            position: relative;
+
+            width: 110px;
+
+            height: 110px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+
+        /* Elegant static outer accent ring */
+
+        .logo-wrapper::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+
+            border-radius: 50% !important;
+
+            border: 2px solid #ff0000;
+
+            z-index: 1;
+
+            opacity: 0.8;
+
+        }
+
+
+
+        /* Image Forced to Circle */
+
+        .brand-logo-img {
+
+            width: 110px !important;
+
+            height: 110px !important;
+
+            border-radius: 50% !important;
+
+            object-fit: cover !important;
+
+            border: 3px solid #000 !important;
+
+            display: block !important;
+
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+
+            z-index: 2;
+
+        }
+
+
+
+        h1 {
+
+            font-size: 26px;
+
+            font-weight: 800;
+
+            margin-bottom: 5px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            color: white !important;
+
+        }
+
+
+
+        .tagline-text {
+
+            color: #aaa !important;
+
+            font-size: 13px;
+
+            margin-bottom: 30px;
+
+            font-weight: 500;
+
+            letter-spacing: 0.5px;
+
+        }
+
+
+
+        /* LINKS SECTION */
+
+        .join-link {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: #111 !important;
+
+            border: 1px solid #222 !important;
+
+            padding: 18px 20px;
+
+            border-radius: 16px;
+
+            margin-bottom: 15px;
+
+            text-decoration: none !important;
+
+            color: white !important;
+
+            transition: border-color 0.2s;
+
+        }
+
+
+
+        .join-link:hover, .join-link:active {
+
+            border-color: #ff0000 !important;
+
+            background: #111 !important;
+
+        }
+
+
+
+        .btn-info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            text-align: left;
+
+        }
+
+
+
+        .btn-info .icon {
+
+            width: 44px;
+
+            height: 44px;
+
+            background: rgba(255, 0, 0, 0.1);
+
+            border-radius: 12px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 20px;
+
+        }
+
+
+
+        .btn-text .title {
+
+            display: block;
+
+            font-weight: 700;
+
+            font-size: 16px;
+
+            color: white !important;
+
+        }
+
+
+
+        .btn-text .subtitle {
+
+            display: block;
+
+            font-size: 12px;
+
+            color: #888 !important;
+
+        }
+
+
+
+        /* 3D VIBRATING CTA BUTTON */
+
+        .main-cta {
+
+            position: relative;
+
+            background: #ff0000 !important;
+
+            color: white !important;
+
+            padding: 22px;
+
+            border-radius: 18px;
+
+            font-weight: 800;
+
+            font-size: 20px;
+
+            text-decoration: none !important;
+
+            display: block;
+
+            margin-top: 25px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            
+
+            /* 3D Isometric Thick Shadow Base */
+
+            box-shadow: 0 8px 0 #990000, 0 15px 25px rgba(255, 0, 0, 0.3) !important;
+
+            transition: transform 0.1s, box-shadow 0.1s;
+
+            
+
+            /* High-converting Micro-Vibration loop */
+
+            animation: micro-vibrate 2.5s ease-in-out infinite;
+
+        }
+
+
+
+        /* Real-Time Tactile Pressing Effect (Pushes down 3D layer) */
+
+        .main-cta:active {
+
+            box-shadow: 0 2px 0 #990000, 0 5px 10px rgba(255, 0, 0, 0.3) !important;
+
+            transform: translateY(6px) !important;
+
+            animation: none; /* Stops vibration temporarily when user physically touches it */
+
+        }
+
+
+
+        /* Compliant tilt/vibration sequence to attract human eyes without tripping bots */
+
+        @keyframes micro-vibrate {
+
+            0%, 100% { transform: rotate(0deg) scale(1); }
+
+            2% { transform: rotate(1deg) scale(1.02); }
+
+            4% { transform: rotate(-1deg) scale(1.02); }
+
+            6% { transform: rotate(1deg) scale(1.02); }
+
+            8% { transform: rotate(-1deg) scale(1.02); }
+
+            10% { transform: rotate(0deg) scale(1); }
+
+        }
+
+
+
+        /* AD COMPLIANCE FOOTER */
+
+        footer {
+
+            margin-top: 45px;
+
+            font-size: 11px;
+
+            color: #666 !important;
+
+            line-height: 1.6;
+
+        }
+
+
+
+        .footer-links {
+
+            margin-bottom: 15px;
+
+        }
+
+
+
+        .footer-links a {
+
+            color: #888 !important;
+
+            text-decoration: none;
+
+            margin: 0 10px;
+
+        }
+
+
+
+        .footer-links a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+
+        .disclaimer {
+
+            font-size: 10px;
+
+            text-align: justify;
+
+            color: #444 !important;
+
+            border-top: 1px solid #111;
+
+            padding-top: 15px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="main-container">
+
+        
+
+        <!-- Logo System (Clean, Safe & Circular) -->
+
+        <div class="logo-wrapper">
+
+            <img src="https://trinetramediaworks.site/wp-content/uploads/2026/05/IPT.jpg" alt="Logo" class="brand-logo-img">
+
+        </div>
+
+
+
+        <h1>Phoenix Traders</h1>
+
+        <div class="tagline-text">
+
+            STOCK MARKET EDUCATION & LEARNING COMMUNITY
+
+        </div>
+
+
+
+        <!-- Safe, Compliant Channels focusing on Learning/Analysis -->
+
+        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="join-link">
+
+            <div class="btn-info">
+
+                <div class="icon">📈</div>
+
+                <div class="btn-text">
+
+                    <span class="title">Market Analysis Channel</span>
+
+                    <span class="subtitle">Access Educational Chart Studies</span>
+
+                </div>
+
+            </div>
+
+            <div style="color: #444;">➔</div>
+
+        </a>
+
+
+
+        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="join-link">
+
+            <div class="btn-info">
+
+                <div class="icon">👥</div>
+
+                <div class="btn-text">
+
+                    <span class="title">Free Knowledge Group</span>
+
+                    <span class="subtitle">Daily Community Insights & Updates</span>
+
+                </div>
+
+            </div>
+
+            <div style="color: #444;">➔</div>
+
+        </a>
+
+
+
+        <!-- 3D Vibrating High-Performance CTA Button -->
+
+        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="main-cta">
+
+            JOIN CHANNEL NOW
+
+        </a>
+
+
+
+        <!-- MANDATORY AD COMPLIANCE FOOTER SETUP -->
+
+        <footer>
+
+            <div class="footer-links">
+
+                <a href="/privacy-policy">Privacy Policy</a> | 
+
+                <a href="/terms-of-service">Terms of Service</a>
+
+            </div>
+
+            <div class="disclaimer">
+
+                <strong>Disclaimer:</strong> All content provided on this channel is strictly for educational and informational purposes only. We do not provide assured financial returns, investment advice, or SEBI-registered financial advisory services. Trading in financial markets involves substantial risk of loss. Please consult a certified financial advisor before making any investment decisions.
+
+            </div>
+
+            <p style="margin-top: 15px;">&copy; 2026 PHOENIX TRADERS • ALL RIGHTS RESERVED</p>
+
+        </footer>
+
+    </div>
+
+
+
+</body>
+
+</html>
