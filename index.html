@@ -16,7 +16,6 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // Initializing your specific Pixel ID
     fbq('init', '2322843458221875');
     fbq('track', 'PageView');
     </script>
@@ -234,8 +233,8 @@
             STOCK MARKET EDUCATION & LEARNING COMMUNITY
         </div>
 
-        <!-- Secondary Channels -->
-        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="join-link" onclick="trackLeadEvent(event, 'https://t.me/+BlaBBTQUhRsxNzg1')">
+        <!-- Links with updated Custom Tracking -->
+        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="join-link" onclick="trackCustomEvent(event, 'https://t.me/+BlaBBTQUhRsxNzg1')">
             <div class="btn-info">
                 <div class="icon">📈</div>
                 <div class="btn-text">
@@ -246,7 +245,7 @@
             <div style="color: #444;">➔</div>
         </a>
 
-        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="join-link" onclick="trackLeadEvent(event, 'https://t.me/+BlaBBTQUhRsxNzg1')">
+        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="join-link" onclick="trackCustomEvent(event, 'https://t.me/+BlaBBTQUhRsxNzg1')">
             <div class="btn-info">
                 <div class="icon">👥</div>
                 <div class="btn-text">
@@ -257,8 +256,8 @@
             <div style="color: #444;">➔</div>
         </a>
 
-        <!-- Main 3D Vibrating CTA with Hybrid Tracking Layout -->
-        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="main-cta" onclick="trackLeadEvent(event, 'https://t.me/+BlaBBTQUhRsxNzg1')">
+        <!-- Main Button -->
+        <a href="https://t.me/+BlaBBTQUhRsxNzg1" class="main-cta" onclick="trackCustomEvent(event, 'https://t.me/+BlaBBTQUhRsxNzg1')">
             Join Channel Now
         </a>
 
@@ -275,24 +274,23 @@
         </footer>
     </div>
 
-    <!-- METRICS & ROUTING SCRIPTS -->
+    <!-- METRICS SCRIPTS -->
     <script>
-    function trackLeadEvent(event, redirectUrl) {
-        event.preventDefault(); // Prevents instant redirect so events can fire securely
+    function trackCustomEvent(event, redirectUrl) {
+        event.preventDefault(); 
 
         // Generate matching event ID for deduplication
-        const eventId = 'lead_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+        const eventId = 'pt_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
 
-        // 1. Browser Event (Standard Meta Pixel)
+        // 1. Browser Custom Event Execution
         if (typeof fbq !== 'undefined') {
-            fbq('track', 'Lead', {
+            fbq('trackCustom', 'PhoenixTraders', {
                 content_name: 'Phoenix Traders Telegram Join',
                 content_category: 'Community Access'
             }, {eventID: eventId});
         }
 
-        // 2. Outbound Hook Layout for Conversions API Pipeline
-        // Replace the URL placeholder below with your web gateway, server-side GTM, or Cloudflare worker webhook endpoint when ready.
+        // 2. Server Pipeline Data Structure
         const capiWebhookUrl = 'YOUR_SERVER_SIDE_CAPI_GATEWAY_URL'; 
 
         if (capiWebhookUrl !== 'YOUR_SERVER_SIDE_CAPI_GATEWAY_URL') {
@@ -300,17 +298,16 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    event_name: 'Lead',
+                    event_name: 'PhoenixTraders',
                     event_id: eventId,
                     pixel_id: '2322843458221875',
-                    client_name: 'Phoenix Traders',
                     source_url: window.location.href,
                     timestamp: Math.floor(Date.now() / 1000)
                 })
-            }).catch(err => console.log('CAPI log pass:', err));
+            }).catch(err => console.log('CAPI status:', err));
         }
 
-        // Secure short delay to allow background scripts to execute before changing pages
+        // Wait brief instant for events to resolve before jumping to Telegram
         setTimeout(function() {
             window.location.href = redirectUrl;
         }, 350);
